@@ -24,7 +24,7 @@ function createToken(user){
 }
 
 router.post('/register', validateNewUser, (req, res) => {
-  const rounds = process.env.HASH_ROUNDS || 12;
+  const rounds = bcrypt.genSaltSync(process.env.HASH_ROUNDS) || 12;
   const hash = bcrypt.hashSync(req.body.password, rounds)
   const newUser = {
     username: req.body.username,
@@ -33,6 +33,7 @@ router.post('/register', validateNewUser, (req, res) => {
   }
   Users.add(newUser)
     .then(user => {
+      console.log(user)
       const token = createToken(user)
       res.status(201).json({new_user: user, token})
     })
