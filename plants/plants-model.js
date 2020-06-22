@@ -14,7 +14,8 @@ function find() {
     .select(
       'id',
       'species',
-      'h2o_frequency'
+      'h2o_frequency',
+      'img_url'
     )
 }
 
