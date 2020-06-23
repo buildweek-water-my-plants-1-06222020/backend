@@ -61,6 +61,21 @@ module.exports = {
         conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
       },
     },
-  }
+  },
+
+  production: {
+    client: "pg",
+    connection: pgConnection,
+    pool: {
+        min: 2,
+        max: 10,
+    },
+    migrations: {
+        directory: "./data/migrations",
+    },
+    seeds: {
+        directory: "./data/seeds",
+    },
+  },
 
 };

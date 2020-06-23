@@ -45,6 +45,7 @@ function findPlantsByUserID(id) {
     )
     .where({'plants.user_id': id})
     .join('users', 'users.id', 'plants.user_id')
+    .orderBy('plants.id')
 }
 
 
