@@ -7,6 +7,16 @@ const Users = require('./users-model.js');
 const Plants = require('../plants/plants-model.js');
 
 
+router.get('/', (req, res) => {
+  Users.find()
+    .then(list => res.status(200).json(list))
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({message: 'An Error occurred when attempting to retrieve a list of users'})
+    })
+})
+
+
 router.get('/:id', validateID, (req, res) => {
   Users.findByID(req.params.id)
     .then(user => res.status(200).json(user))
