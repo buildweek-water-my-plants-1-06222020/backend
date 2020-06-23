@@ -17,6 +17,7 @@ function find() {
       'h2o_frequency',
       'img_url'
     )
+    .orderBy('id')
 }
 
 
