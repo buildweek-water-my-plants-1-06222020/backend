@@ -18,6 +18,7 @@ function find() {
       'users.username',
       'users.phone_number'
     )
+    .orderBy('users.id')
 }
 
 

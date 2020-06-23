@@ -45,9 +45,19 @@ https://water-my-plants-buildweek.herokuapp.com/api
 | user_id       | integer | yes      | no     | user's id associated with plant - foreign key (will auto populate when new plant is created) |
 
 
-# Successful Requests Return:
+# Requests and Returns:
 
-POST /api/auth/register
+## POST /api/auth/register
+Request Body:
+```json
+  {
+    "username": "PamelaIsley",
+    "password": "strongpassword",
+    "phone_number": "1234567890",
+  }
+```
+
+Returns:
 ```json
   {
     "new_user": {
@@ -60,7 +70,16 @@ POST /api/auth/register
 ```
 
 
-POST /api/auth/login
+## POST /api/auth/login
+Request Body:
+```json
+  {
+    "username": "PamelaIsley",
+    "password": "strongpassword"
+  }
+```
+
+Returns:
 ```json
   {
     "welcome": "PamelaIsley",
@@ -71,7 +90,18 @@ POST /api/auth/login
 ```
 
 
-POST /users/:id/plants
+## POST /users/:id/plants
+Request Body:
+```json
+  {
+    "nickname": "Poison Ivy",
+    "species": "Toxicodendron radicans",
+    "h2o_frequency": "2 times per week",
+    "img_url": "",
+  }
+```
+
+Returns:
 ```json
   {
     "plant_id": 7,
@@ -84,7 +114,8 @@ POST /users/:id/plants
 ```
 
 
-GET /auth/plants
+## GET /auth/plants
+Returns:
 ```json
   [
     {
@@ -127,7 +158,8 @@ GET /auth/plants
 ```
 
 
-GET /users/:id
+## GET /users/:id
+Returns:
 ```json
   {
     "id": 3,
@@ -137,7 +169,8 @@ GET /users/:id
 ```
 
 
-GET /users/:id/plants
+## GET /users/:id/plants
+Returns:
 ```json
   [
     {
@@ -184,7 +217,8 @@ GET /users/:id/plants
 ```
 
 
-GET /plants/:id
+## GET /plants/:id
+Returns:
 ```json
   {
     "plant_id": 7,
@@ -197,7 +231,16 @@ GET /plants/:id
 ```
 
 
-PUT /users/:id
+## PUT /users/:id
+Request Body:
+```json
+  {
+    "username": "PamelaIsley",
+    "password": "newpassword"
+  }
+```
+
+Returns:
 ```json
   {
     "id": 3,
@@ -207,7 +250,18 @@ PUT /users/:id
 ```
 
 
-PUT /plants/:id
+## PUT /plants/:id
+Request Body:
+```json
+  {
+    "nickname": "Super Poisn Ivy",
+    "species": "Toxicodendron Radicans",
+    "h2o_frequency": "Daily",
+    "img_url": "",
+  }
+```
+
+Returns:
 ```json
   {
     "plant_id": 6,
@@ -215,12 +269,13 @@ PUT /plants/:id
     "species": "Toxicodendron Radicans",
     "h2o_frequency": "Daily",
     "img_url": null,
-    "user": "Brian4"
+    "user": "PamelaIsley"
   }
 ```
 
 
-DELETE /users/:id
+## DELETE /users/:id
+Returns:
 ```json
   {
     "message": "User with ID 2 has been deleted"
@@ -228,7 +283,8 @@ DELETE /users/:id
 ```
 
 
-DELETE /plants/:id
+## DELETE /plants/:id
+Returns:
 ```json
   {
     "message": "Plant with ID 5 has been deleted"
