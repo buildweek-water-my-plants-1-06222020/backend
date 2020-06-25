@@ -38,7 +38,13 @@ router.get('/:id/plants', validateID, (req, res) => {
 
 
 router.post('/:id/plants', validateID, validatePlant, (req, res) => {
-  const plant = {...req.body, user_id: req.params.id}
+  // const plant = {...req.body, user_id: req.params.id}
+  const plant = { 
+    user_id: req.params.id,
+    nickname: req.body.nickname,
+    species: req.body.species,
+    h2o_frequency: req.body.h2o_frequency,
+  }
   Plants.add(plant)
     .then(added => res.status(201).json(added))
     .catch(err => {
@@ -102,7 +108,7 @@ function validateID (req, res, next){
 
 function validatePlant (req, res, next){
   if(Object.keys(req.body).length === 0){
-    res.status(401).json({message: 'No User Data provided'});
+    res.status(401).json({message: 'No Plant Data provided'});
   } else if(!req.body.nickname || !req.body.species || !req.body.h2o_frequency){
     res.status(401).json({message: 'Nickname, Species, and H20 Frequency are ALL REQUIRED!'});
   } else {
