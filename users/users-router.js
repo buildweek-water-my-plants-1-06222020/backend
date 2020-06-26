@@ -44,6 +44,7 @@ router.post('/:id/plants', validateID, validatePlant, (req, res) => {
     nickname: req.body.nickname,
     species: req.body.species,
     h2o_frequency: req.body.h2o_frequency,
+    img_url: req.body.img_url
   }
   Plants.add(plant)
     .then(added => res.status(201).json(added))
